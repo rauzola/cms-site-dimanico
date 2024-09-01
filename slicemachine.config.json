@@ -1,6 +1,6 @@
 {
-  "repositoryName": "sitedimanico2",
-  "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
+  "adapter": "@slicemachine/adapter-next",
+  "repositoryName": "sozinho",
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
 }

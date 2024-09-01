@@ -1,28 +1,21 @@
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
-import config from "../slicemachine.config.json";
+import sm from "../slicemachine.config.json";
 
 /**
  * The project's Prismic repository name.
  */
 export const repositoryName =
-  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || config.repositoryName;
+  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
 
 /**
- * A list of Route Resolver objects that define how a document's `url` field is resolved.
- *
- * {@link https://prismic.io/docs/route-resolver#route-resolver}
+ * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
  */
-// TODO: Update the routes array to match your project's route structure.
 const routes: prismic.ClientConfig["routes"] = [
-  {
-  	type: "about",
-  	path: "/quemsomos",
-  },
-  // {
-  // 	type: "page",
-  // 	path: "/:uid",
-  // },
+  { type: "page", path: "/", uid: "home" },
+  { type: "page", path: "/:uid" },
+  { type: "settings", path: "/" },
+  { type: "navigation", path: "/" },
 ];
 
 /**
@@ -34,15 +27,14 @@ const routes: prismic.ClientConfig["routes"] = [
 export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(repositoryName, {
     routes,
-    accessToken: process.env.PRISMIC_API_KEY,
+    fetchOptions:
+      process.env.NODE_ENV === "production"
+        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+        : { next: { revalidate: 5 } },
     ...config,
   });
 
-  prismicNext.enableAutoPreviews({
-    client,
-    previewData: config.previewData,
-    req: config.req,
-  });
+  prismicNext.enableAutoPreviews({ client });
 
   return client;
 };
