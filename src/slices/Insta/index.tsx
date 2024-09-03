@@ -36,12 +36,13 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
         {/* inicio */}
 
         <img
-          src={img}
-          alt={alt}
+          src="https://images.prismic.io/sozinho/Ztb7eLzzk9ZrW6zG_projetomaisvida.jpg?auto=format,compress&rect=0,8,217,217&w=112&h=112"
+          alt="ioeuisoefu"
           className="w-[120px] h-[120px] rounded-full mb-2"
         />
 
-        <Avatar src={img} alt={alt} />
+        <Avatar src="https://images.prismic.io/sozinho/Ztb7eLzzk9ZrW6zG_projetomaisvida.jpg?auto=format,compress&rect=0,8,217,217&w=112&h=112"
+        alt="ei wojfiowejf" />
 
 
         <TitleInsta>
