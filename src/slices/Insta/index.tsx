@@ -15,6 +15,8 @@ import { useState } from "react";
 import lightTheme from './themes/light';
 import darkTheme from './themes/dark';
 import { ThemeProvider } from "styled-components";
+import { Brightness6Outlined } from '@mui/icons-material';
+
 
 /**
  * Props for `Insta`.
@@ -50,14 +52,14 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
           </TitleInsta>
 
           <ThemeSwicher onClick={switchTheme}>
-            <h1>asdasd</h1>
-          </ThemeSwicher>
+              <h1>h</h1>
+            </ThemeSwicher>
 
-          {slice.primary.linkbio.map((item: { nomelink: string; linkbio: { url: string } }) => (
+            {slice.primary.linkbio.map((item: any) => (
             <>
               <Link
-                isDarkTheme={isDarkTheme}
-                href={item.linkbio.url}
+              isDarkTheme={isDarkTheme}
+              href={(item.linkbio as { url: string }).url}
                 target='_blank'
               >
                 {item.nomelink}
