@@ -22,12 +22,6 @@ export type InstaProps = SliceComponentProps<Content.InstaSlice>;
 const Insta = ({ slice }: InstaProps): JSX.Element => {
 
   
-  
-  {slice.primary.linkbio.map((item: any, index: number) => (
-  console.log(item.cor_do_campo)
-
-))}
-
   return (
     <section
       data-slice-type={slice.slice_type}
