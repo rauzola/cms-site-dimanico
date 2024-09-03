@@ -1,6 +1,6 @@
 import { asText } from "@prismicio/client";
 import { PrismicText } from "@prismicio/react";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import { createClient } from "@/prismicio";
 import { Bounded } from "@/components/Bounded";
@@ -18,8 +18,13 @@ export async function Header() {
             href="/"
             className="text-xl font-semibold tracking-tight"
           >
-            <PrismicText field={settings.data.siteTitle} />
+            {settings.data.logo_nome}
+
+            {/* <PrismicText field={settings.data.logo_nome} /> */}
+            {/* <PrismicNextImage field={settings.data.imgaem_logo} /> */}
+
           </PrismicNextLink>
+
           <nav>
             <ul className="flex flex-wrap gap-6 md:gap-10">
               {navigation.data?.links.map((item: any, index: number) => (

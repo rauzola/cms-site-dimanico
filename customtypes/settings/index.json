@@ -6,13 +6,19 @@
   "status": true,
   "json": {
     "Main": {
-      "siteTitle": {
-        "type": "StructuredText",
+      "imgaem_logo": {
+        "type": "Image",
         "config": {
-          "label": "Site Title",
-          "placeholder": "Title of the site",
-          "allowTargetBlank": false,
-          "single": "heading1"
+          "label": "imgaem logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "logo_nome": {
+        "type": "Text",
+        "config": {
+          "label": "logo nome",
+          "placeholder": ""
         }
       }
     }
