@@ -15,8 +15,6 @@ import { useState } from "react";
 import lightTheme from './themes/light';
 import darkTheme from './themes/dark';
 import { ThemeProvider } from "styled-components";
-import { Brightness6Outlined } from '@mui/icons-material';
-
 
 /**
  * Props for `Insta`.
