@@ -60,6 +60,14 @@
 									"value": "stood",
 									"type": "Text"
 								}
+							],
+							[
+								"cor_do_campo",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#ca78d6",
+									"type": "Color"
+								}
 							]
 						]
 					}

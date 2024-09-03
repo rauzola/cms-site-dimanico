@@ -8,13 +8,8 @@ import {
   Avatar,
   Link,
   TitleInsta,
-  ThemeSwicher
 } from './styles';
 import { PrismicRichText } from "@/components/PrismicRichText";
-import { useState } from "react";
-import lightTheme from './themes/light';
-import darkTheme from './themes/dark';
-import { ThemeProvider } from "styled-components";
 
 /**
  * Props for `Insta`.
@@ -26,18 +21,18 @@ export type InstaProps = SliceComponentProps<Content.InstaSlice>;
  */
 const Insta = ({ slice }: InstaProps): JSX.Element => {
 
-  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
+  
+  
+  {slice.primary.linkbio.map((item: any, index: number) => (
+  console.log(item.cor_do_campo)
 
-  const switchTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+))}
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Container>
 
           <Avatar
@@ -49,24 +44,20 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
             <PrismicRichText field={slice.primary.nome_descricao} />
           </TitleInsta>
 
-          <ThemeSwicher onClick={switchTheme}>
-              <h1>h</h1>
-            </ThemeSwicher>
+         
 
-            {slice.primary.linkbio.map((item: any) => (
-            <>
-              <Link
-              isDarkTheme={isDarkTheme}
+          {slice.primary.linkbio.map((item: any, index: number) => (
+            <Link
+              key={index} // Adicione uma chave única
               href={(item.linkbio as { url: string }).url}
-                target='_blank'
-              >
-                {item.nomelink}
-              </Link>
-            </>
+              target='_blank'
+              Color={item.cor_do_campo}
+            >
+              {item.nomelink}
+            </Link>
           ))}
 
         </Container>
-      </ThemeProvider>
     </section>
   );
 };

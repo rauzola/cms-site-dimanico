@@ -453,6 +453,16 @@ export interface InstaSliceDefaultPrimaryLinkbioItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   linkbio: prismic.LinkField;
+
+  /**
+   * cor do campo field in *Insta → Default → Primary → LinkBio*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insta.default.primary.linkbio[].cor_do_campo
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  cor_do_campo: prismic.ColorField;
 }
 
 /**
