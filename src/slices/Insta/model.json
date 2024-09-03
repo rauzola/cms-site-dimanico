@@ -1,0 +1,64 @@
+{
+  "id": "insta",
+  "type": "SharedSlice",
+  "name": "Insta",
+  "description": "Insta",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "foto_logo": {
+          "type": "Image",
+          "config": {
+            "label": "Foto_logo",
+            "constraint": {
+              "width": 112,
+              "height": 112
+            },
+            "thumbnails": []
+          }
+        },
+        "nome_descricao": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Nome Descrição",
+            "placeholder": "Nome - Descrição",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "linkbio": {
+          "type": "Group",
+          "config": {
+            "label": "LinkBio",
+            "repeat": true,
+            "fields": {
+              "nomelink": {
+                "type": "Text",
+                "config": {
+                  "label": "NomeLink",
+                  "placeholder": ""
+                }
+              },
+              "linkbio": {
+                "type": "Link",
+                "config": {
+                  "label": "Linkbio",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -62,6 +62,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | InstaSlice
   | HeroSlice
   | QuoteSlice
   | TextSlice
@@ -430,6 +431,93 @@ export type ImageCardsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Insta → Default → Primary → LinkBio*
+ */
+export interface InstaSliceDefaultPrimaryLinkbioItem {
+  /**
+   * NomeLink field in *Insta → Default → Primary → LinkBio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insta.default.primary.linkbio[].nomelink
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nomelink: prismic.KeyTextField;
+
+  /**
+   * Linkbio field in *Insta → Default → Primary → LinkBio*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insta.default.primary.linkbio[].linkbio
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkbio: prismic.LinkField;
+}
+
+/**
+ * Primary content in *Insta → Default → Primary*
+ */
+export interface InstaSliceDefaultPrimary {
+  /**
+   * Foto_logo field in *Insta → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insta.default.primary.foto_logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  foto_logo: prismic.ImageField<never>;
+
+  /**
+   * Nome Descrição field in *Insta → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Nome - Descrição
+   * - **API ID Path**: insta.default.primary.nome_descricao
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  nome_descricao: prismic.RichTextField;
+
+  /**
+   * LinkBio field in *Insta → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insta.default.primary.linkbio[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  linkbio: prismic.GroupField<Simplify<InstaSliceDefaultPrimaryLinkbioItem>>;
+}
+
+/**
+ * Default variation for Insta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InstaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<InstaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Insta*
+ */
+type InstaSliceVariation = InstaSliceDefault;
+
+/**
+ * Insta Shared Slice
+ *
+ * - **API ID**: `insta`
+ * - **Description**: Insta
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InstaSlice = prismic.SharedSlice<"insta", InstaSliceVariation>;
+
+/**
  * Primary content in *Quote → Default → Primary*
  */
 export interface QuoteSliceDefaultPrimary {
@@ -700,6 +788,11 @@ declare module "@prismicio/client" {
       ImageCardsSliceDefaultPrimary,
       ImageCardsSliceVariation,
       ImageCardsSliceDefault,
+      InstaSlice,
+      InstaSliceDefaultPrimaryLinkbioItem,
+      InstaSliceDefaultPrimary,
+      InstaSliceVariation,
+      InstaSliceDefault,
       QuoteSlice,
       QuoteSliceDefaultPrimary,
       QuoteSliceVariation,
