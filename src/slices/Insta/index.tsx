@@ -28,13 +28,17 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
 
   return (
     <section
-    data-slice-type={slice.slice_type}
-    data-slice-variation={slice.variation}
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
     >
-        <Container>
+      <Container>
         {/* inicio */}
 
-        {/* <Avatar src={slice.primary.foto_logo.url}  /> */}
+        <img
+          src={slice.primary.foto_logo.url}
+          alt={slice.primary.foto_logo.alt}
+          className="w-[120px] h-[120px] rounded-full mb-2"
+        />
 
 
         <TitleInsta>
@@ -43,19 +47,19 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
 
 
         {slice.primary.linkbio.map((item) => (
-  <>
-    <Link
-      href={(item.linkbio as { url: string }).url}
-      target='_blank'
-    >
-      {item.nomelink}
-    </Link>
-  </>
-))}
+          <>
+            <Link
+              href={(item.linkbio as { url: string }).url}
+              target='_blank'
+            >
+              {item.nomelink}
+            </Link>
+          </>
+        ))}
 
         {/* fim */}
-    </Container>
-      </section>
+      </Container>
+    </section>
   );
 };
 
