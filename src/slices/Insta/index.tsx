@@ -7,14 +7,14 @@ import {
   Container,
   Avatar,
   Link,
-  TitleInsta
+  TitleInsta,
+  ThemeSwicher
 } from './styles';
 import { PrismicRichText } from "@/components/PrismicRichText";
 import { useState } from "react";
 import lightTheme from './themes/light';
 import darkTheme from './themes/dark';
 import { ThemeProvider } from "styled-components";
-
 
 /**
  * Props for `Insta`.
@@ -28,6 +28,9 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
 
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
 
+  const switchTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
 
   return (
     <section
@@ -36,26 +39,25 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
     >
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Container>
-          {/* inicio */}
-
-
 
           <Avatar
             src={slice.primary.foto_logo.url ? slice.primary.foto_logo.url : ""} // se nao tiver a condição ele nao roda na vercel
             alt={slice.primary.foto_logo.alt ? slice.primary.foto_logo.alt : ""}
           />
 
-
           <TitleInsta>
             <PrismicRichText field={slice.primary.nome_descricao} />
           </TitleInsta>
 
+          <ThemeSwicher onClick={switchTheme}>
+            <h1>asdasd</h1>
+          </ThemeSwicher>
 
-          {slice.primary.linkbio.map((item) => (
+          {slice.primary.linkbio.map((item: { nomelink: string; linkbio: { url: string } }) => (
             <>
               <Link
-              isDarkTheme={isDarkTheme}
-              href={(item.linkbio as { url: string }).url}
+                isDarkTheme={isDarkTheme}
+                href={item.linkbio.url}
                 target='_blank'
               >
                 {item.nomelink}
@@ -63,10 +65,8 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
             </>
           ))}
 
-          {/* fim */}
         </Container>
       </ThemeProvider>
-
     </section>
   );
 };
