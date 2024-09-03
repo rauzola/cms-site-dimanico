@@ -24,7 +24,8 @@ export type InstaProps = SliceComponentProps<Content.InstaSlice>;
  */
 const Insta = ({ slice }: InstaProps): JSX.Element => {
 
-
+  const img = slice.primary.foto_logo.url;
+  const alt = slice.primary.foto_logo.alt;
 
   return (
     <section
@@ -35,10 +36,12 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
         {/* inicio */}
 
         <img
-          src={slice.primary.foto_logo.url}
-          alt={slice.primary.foto_logo.alt}
+          src={img}
+          alt={alt}
           className="w-[120px] h-[120px] rounded-full mb-2"
         />
+
+        <Avatar src={img} alt={alt} />
 
 
         <TitleInsta>
