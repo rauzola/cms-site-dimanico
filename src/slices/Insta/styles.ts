@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-
+interface ILink {
+  isDarkTheme: boolean;
+}
 
 export const Container = styled.div`
   width: 100vw;
@@ -53,7 +55,7 @@ export const ThemeSwicher = styled.button`
   padding: 1rem;
 `;
 
-export const Link = styled.a`
+export const Link = styled.a<ILink>`
   width: 30%;
   height: 50px;
   background-color: transparent;
@@ -61,9 +63,11 @@ export const Link = styled.a`
   margin: 1rem 0;
 
   border-radius: 0.5rem;
+  border: 1px solid ${props => props.theme.colors.text};
 
   font-size: 1rem;
   font-weight: 400;
+  color: ${props => props.theme.colors.text};
   text-decoration: none;
   cursor: pointer;
 
@@ -72,6 +76,8 @@ export const Link = styled.a`
   align-items: center;
 
   &:hover {
+    background-color: ${props => props.theme.colors.text};
+    color: ${props => props.isDarkTheme ? '#000' : '#FFF'};
   }
 
   @media (max-width: 600px) {
