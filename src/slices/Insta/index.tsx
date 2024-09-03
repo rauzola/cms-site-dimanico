@@ -34,7 +34,7 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
         <Container>
         {/* inicio */}
 
-        <Avatar src={slice.primary.foto_logo.url} alt={slice.primary.foto_logo.alt} />
+        <Avatar src={slice.primary.foto_logo.url}  />
 
 
         <TitleInsta>
