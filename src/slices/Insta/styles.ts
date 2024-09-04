@@ -47,7 +47,7 @@ export const Link = styled.a<IColor>`
   align-items: center;
 
   &:hover {
-    background-color: ${props => props.Color};
+    background-color: ${props => props.Color || "#999495"};
     color: #fff;
   }
 
