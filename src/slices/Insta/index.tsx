@@ -4,6 +4,8 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText } from "@/components/PrismicRichText";
 import { Container, Avatar, Link, TitleInsta } from './styles';
+import { useEffect, useState } from "react";
+import { Loader } from "@/components/Loader";
 
 /**
  * Props for `Insta`.
@@ -15,7 +17,20 @@ export type InstaProps = SliceComponentProps<Content.InstaSlice>;
  */
 const Insta = ({ slice }: InstaProps): JSX.Element => {
 
-  console.log(slice.primary.foto_logo.alt)
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+
+  useEffect(() => {
+    // O useEffect será executado apenas uma vez após o componente ser montado
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    // Limpeza do timer quando o componente é desmontado
+    return () => clearTimeout(timer);
+  }, []); // Array de dependências vazio
+
 
   return (
     <section
@@ -23,6 +38,11 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Container>
+
+      {isLoading ? (
+          <Loader />
+        ) : ( 
+        <>
         <Avatar
           src={slice.primary.foto_logo.url || ""} // se nao tiver a condição ele nao roda na vercel
           alt={slice.primary.foto_logo.alt || ""}
@@ -42,6 +62,8 @@ const Insta = ({ slice }: InstaProps): JSX.Element => {
             {item.nomelink}
           </Link>
         ))}
+        </>
+        )}
       </Container>
     </section>
   );
